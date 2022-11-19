@@ -20,6 +20,11 @@ public class PaymentGatewayController {
         return "home";
     }
 
+    @RequestMapping(value = "/modal")
+    public String modal() {
+        return "modal";
+    }
+
     @RequestMapping(value = "/payment/initiate", method=RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<String> initiatePayment(@RequestBody PaymentDetails paymentDetails) {

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Turbo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Product Card -->
+    <div class="card mt-4 ms-5 shadow" style="width: 17.2rem;">
+        <img class="card-img-top" th:src="@{/images/chips.jpg}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Popcorn chips - assorted flavors (box of 4)</h5>
+            <p class="card-text">Crunchy and flavourful Popcorn Chips!</p>
+            <p class="card-text fw-bold">₹ 500.00</p>
+            <a href="#" class="btn btn-warning px-3">Add to Cart</a>
+            <a href="#" class="btn btn-success px-4 ms-2" data-bs-toggle="modal" data-bs-target="#demo-modal-3">Buy Now</a>
+        </div>
+    </div>
+
+    <form class="modal fade multi-step" id="demo-modal-3">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="width: 350px; height: 450px">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 step-1" data-step="1">Step 1: Mobile</h1>
+                    <h1 class="modal-title fs-5 step-2" data-step="2">Step 2: Delivery address</h1>
+                    <h1 class="modal-title fs-5 step-3" data-step="3">Step 3: Payment Method</h1>
+                    <h1 class="modal-title fs-5 step-4" data-step="4">Card Payment</h1>
+                    <h1 class="modal-title fs-5 step-5" data-step="5">Netbanking</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+
+                <!-- Mobile -->
+                <div class="modal-body step-1" data-step="1">
+
+                    <div class="mb-3">
+                        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="7805955046">
+                    </div>
+
+                </div>
+
+
+                <!-- Address -->
+                <div class="modal-body step-2" data-step="2">
+                    <div class="border border-2 border-success rounded p-3">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">Landmark House, Plot No 65, 7th Floor, Sector 44, Gurgaon, 122003 INDIA</label>
+                    </div>
+
+                    <br>
+                    <div class="border border-1 border-secondary rounded p-3">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">Q-149, Sector 40, Gurgaon, 122003 INDIA</label>
+                    </div>
+
+                    <br>
+                    <button type="button" class="btn btn-secondary" style="--bs-btn-padding-y: .10rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; background-color: #dddfe0; color: #595959;">
+                        Add new address
+                    </button>
+                </div>
+
+
+                <!-- Payment -->
+                <div class="modal-body step-3" data-step="3">
+                    <div class="list-group ">
+                        <a href="#" class="list-group-item list-group-item-action py-3" onclick="sendEvent('#demo-modal-3', 4)">Debit/Credit Cards</a>
+                        <a href="#" class="list-group-item list-group-item-action py-3" onclick="sendEvent('#demo-modal-3', 5)">Netbanking</a>
+                        <a href="#" class="list-group-item list-group-item-action py-3">Cash on Delivery</a>
+                    </div>
+                </div>
+
+
+                <!-- Card payment -->
+                <div class="modal-body step-4" data-step="4">
+                    <div class="mb-3">
+                        <input type="number" class="form-control" id="cardno" placeholder="Card number">
+                    </div>
+
+                    <div>
+                        <div class="mb-3" style="width: 40%; float: left;">
+                            <input type="number" class="form-control" id="cardexpiry" value="" placeholder="Expiry (MM/YY)">
+                        </div>
+                        <div class="mb-3" style="width: 40%; float: right;">
+                            <input type="number" class="form-control" id="cardcvv" placeholder="CVV">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="cardname" placeholder="Name on card">
+                    </div>
+
+                    <br>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success px-5 py-1">Proceed to pay</button>
+                    </div>
+
+                </div>
+
+
+                <!-- Netbanking -->
+                <div class="modal-body step-5" data-step="5">
+                    <div class="list-group ">
+                        <a href="#" class="list-group-item list-group-item-action py-3">HDFC Bank</a>
+                        <a href="#" class="list-group-item list-group-item-action py-3" >SBI</a>
+                    </div>
+                </div>
+
+                <!-- Footer-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-primary step step-1" data-step="1" onclick="sendEvent('#demo-modal-3', 2)">Continue</button>
+                    <button type="button" class="btn btn-sm btn-secondary step step-2" data-step="2" onclick="sendEvent('#demo-modal-3', 1)">Back</button>
+                    <button type="button" class="btn btn-sm btn-primary step step-2" data-step="2" onclick="sendEvent('#demo-modal-3', 3)">Continue</button>
+                    <button type="button" class="btn btn-sm btn-secondary step step-3" data-step="3" onclick="sendEvent('#demo-modal-3', 2)">Back</button>
+
+                    <button type="button" class="btn btn-sm btn-secondary step step-4" data-step="4" onclick="sendEvent('#demo-modal-3', 3)">Back</button>
+                    <button type="button" class="btn btn-sm btn-secondary step step-5" data-step="5" onclick="sendEvent('#demo-modal-3', 3)">Back</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+    <script th:src="@{/js/multi-step-modal.js}"></script>
+
+    <script>
+        sendEvent = function(sel, step) {
+            var sel_event = new CustomEvent('next.m.' + step, {detail: {step: step}});
+            window.dispatchEvent(sel_event);
+        }
+    </script>
+
+</body>
+</html>

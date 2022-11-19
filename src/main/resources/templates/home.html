@@ -81,12 +81,23 @@
             "name": "",
             "description": "",
             "prefill": {
-                "name": "",
-                "email": "dummy@gmail.com",
-                "contact": "8888888888",
-                "method": "netbanking"
+                "email": "demo@gmail.com",
+                "contact": "7805955046",
+                "method": "card",
+                "card[name]": "Gaurav Kumar",
+                "card[number]": "4111111111111111",
+                "card[expiry]": "12/25",
+                "card[cvv]": "123"
             },
-            "readonly": { 'email': true, 'contact': true },
+            "readonly": {
+                'email': true,
+                'contact': true,
+                "method": true,
+                "card[name]": true,
+                "card[number]": true,
+                "card[expiry]": true,
+                "card[cvv]": true
+            },
             "handler": function (response){
                 alert(response.razorpay_payment_id); /* use this razorpay_payment_id for feature reference to this order */
                 $('#msform')[0].reset();

@@ -26,6 +26,7 @@ public class PaymentOrchestrationService {
             // Initialize razorpay client
             razorpayClient = new RazorpayClient(SECRET_ID, SECRET_KEY);
 
+//            razorpayClient.payments.createJsonPayment();
             // Create an order
             int amountInPaise = convertRupeeToPaise(paymentDetails.getAmount());
             String buyerName = paymentDetails.getBuyerName();
